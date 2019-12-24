@@ -1,0 +1,229 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.wrapper {
+  display: block;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* top layer */
+  z-index: 9999;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  /* full screen */
+  width: 100vw;
+  height: 100vh;
+  /* transparent black */
+  background: rgba(0, 0, 0, 0.7);
+  /* middle layer, i.e. appears below the sidebar */
+  z-index: 998;
+  opacity: 0;
+  /* animate the transition */
+  transition: all 0.5s ease-in-out;
+}
+/* display .overlay when it has the .active class */
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+#dismiss {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  /* top right corner of the sidebar */
+  top: 10px;
+  right: 10px;
+}
+
+
+.error-explain {
+  color: red !important;
+  display: block !important;
+}
+
+.form-control {
+  border-radius: 5px !important;
+  border: solid 2px  #010101 !important;
+  background-color: #ffffff !important;
+  min-height: 3rem !important;
+  height: fit-content !important;
+  font-size: 15px !important;
+
+}
+
+.search-form-control {
+  height: 4rem;
+  font-size: 15px;
+}
+
+
+.form-control:focus{
+  /*border-color: #cccccc;*/
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: #00a8ff solid 2px !important;
+}
+
+.invalid-input{
+  border-color: rgb(207, 28, 28)!important;
+  /*box-shadow: 0 0 0 0.2rem rgba(221, 45, 45, 0.534)!important;*/
+}
+.invalid-input:focus{
+  border-color: rgb(207, 28, 28)!important;
+}
+
+mat-divider {
+  background-color: #005f95;
+  border-top-width: 2px !important;
+}
+.mat-nav-list .mat-list-item :hover{
+  border-right: #007ec1 solid;
+  font-weight: bold !important;
+  color: #005f95 ;
+}
+.icon-button:focus {
+  outline: none !important;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a.nav-item {
+  margin: 0 2rem;
+  cursor: pointer;
+}
+
+.custom-input {
+  width: 100%;
+  min-height: 2.5rem;
+}
+
+.branch-modal {
+  margin-top: 30vh !important;
+}
+
+@media (min-width: 400px) {
+  .branch-modal {
+    width: 25rem !important;
+  }
+}
+
+.title1 {
+  color: #007ec1;
+  font-weight: 500;
+  padding-bottom: 1rem;
+}
+
+.page-container {
+  padding: 1rem;
+}
+
+.applied-popover {
+  background: aliceblue !important;
+  font-size: 125% !important;
+  max-width: 400px !important;
+  left: -2rem;
+}
+.applied-popover .arrow::after {
+  border-top-color: aliceblue !important;
+}
+
+.mat-stroked-button {
+  border: 2px solid currentColor !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 960px) {
+  .mat-table {
+    border: 0;
+    vertical-align: middle
+  }
+
+  .mat-table caption {
+    font-size: 1em;
+  }
+
+    /*Enable this to hide header*/
+  /*.mat-table .mat-header-cell {
+
+    border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }*/
+  .mat-table .mat-row {
+    border-bottom: 5px solid #ddd;
+    display: block;
+    height: fit-content;
+    padding: 0 3rem;
+  }
+  /*
+  .mat-table .mat-row:nth-child(even) {background: #CCC}
+  .mat-table .mat-row:nth-child(odd) {background: #FFF}
+  */
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1em;
+    text-align: right;
+    font-weight: normal;
+    height:30px;
+    margin-bottom: 4%;
+  }
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+
+    font-size: .85em;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+  .mat-table .mat-cell:first-child {
+    margin-top: 4%;
+  }
+  td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+    padding-left: 0 !important;
+  }
+  .courses-tbl-header {
+    display: none;
+  }
+}

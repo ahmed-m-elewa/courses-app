@@ -1,0 +1,88 @@
+<div class="register-container">
+  <h1 style="color: #6866f5">SYPRON Courses</h1>
+  <mat-card class="register-card">
+    <h3 style="padding: 1rem; color: #6866f5">Sign Up</h3>
+    <form [formGroup]="registrationForm">
+      <div class="row">
+        <div class="col-6">
+          <div class="custom-input" style="margin-bottom: 2rem">
+            <input class="form-control"
+                   formControlName="firstName"
+                   [class.invalid-input]="firstName.errors && firstName.dirty"
+                   placeholder="First Name">
+            <label class="error-explain" *ngIf="firstName.errors?.required && firstName.dirty">First Name is required</label>
+            <label class="error-explain" *ngIf="firstName.errors?.pattern && firstName.dirty">please enter a valid Name</label>
+            <label class="error-explain" *ngIf="firstName.errors?.minlength && firstName.dirty">first Name must be 3 characters at least</label>
+            <label class="error-explain" *ngIf="firstName.errors?.maxlength && firstName.dirty">first Name must be less than 25 characters</label>
+
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="custom-input" style="margin-bottom: 2rem">
+            <input class="form-control"
+                   formControlName="lastName"
+                   [class.invalid-input]="lastName.errors && lastName.dirty"
+                   placeholder="Last Name">
+            <label class="error-explain" *ngIf="lastName.errors?.required && lastName.dirty">Last Name is required</label>
+            <label class="error-explain" *ngIf="lastName.errors?.pattern && lastName.dirty">please enter a valid Name</label>
+            <label class="error-explain" *ngIf="lastName.errors?.minlength && lastName.dirty">Last Name must be 3 characters at least</label>
+            <label class="error-explain" *ngIf="lastName.errors?.maxlength && lastName.dirty">Last Name must be less than 25 characters</label>
+
+          </div>
+        </div>
+      </div>
+      <div class="custom-input" style="margin-bottom: 2rem">
+        <input class="form-control"
+               formControlName="userName"
+               [class.invalid-input]="userName.errors && userName.dirty"
+               placeholder="Username">
+        <label class="error-explain" *ngIf="userName.errors?.required && userName.dirty">username is required</label>
+        <label class="error-explain" *ngIf="userName.errors?.pattern && userName.dirty">please enter a valid username</label>
+        <label class="error-explain" *ngIf="userName.errors?.minlength && userName.dirty">username must be 5 characters at least</label>
+        <label class="error-explain" *ngIf="userName.errors?.maxlength && userName.dirty">username must be less than 25 characters</label>
+
+      </div>
+      <div class="custom-input" style="margin-bottom: 2rem">
+        <input class="form-control"
+               formControlName="email"
+               [class.invalid-input]="email.errors && email.dirty"
+               placeholder="Email">
+        <label class="error-explain" *ngIf="email.errors?.required && email.dirty">Email is required</label>
+        <label class="error-explain" *ngIf="email.errors?.email && email.dirty">please enter a valid Email</label>
+
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="custom-input" style="margin-bottom: 2rem">
+            <input class="form-control"
+                   type="password"
+                   formControlName="password"
+                   [class.invalid-input]="password.errors && password.dirty"
+                   placeholder="Password">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="custom-input" style="margin-bottom: 2rem">
+            <input class="form-control"
+                   type="password"
+                   formControlName="confirmPassword"
+                   [class.invalid-input]="confirmPassword.errors && confirmPassword.dirty"
+                   placeholder="Confirm Password">
+          </div>
+        </div>
+      </div>
+      <label class="error-explain" *ngIf="password.errors?.required && password.dirty">Password is required</label>
+      <label class="error-explain" *ngIf="password.errors?.pattern && password.dirty">Password is low, must has numbers and characters </label>
+      <label class="error-explain" *ngIf="password.errors?.minlength && password.dirty">Password is low, length must be 7 at least </label>
+      <label class="error-explain" *ngIf="password.errors?.maxlength && password.dirty">Password is too long </label>
+      <label class="error-explain" *ngIf="confirmPassword.errors?.required && confirmPassword.dirty">Confirm Password is required</label>
+      <label class="error-explain" *ngIf="confirmPassword.errors?.equalPasswords && confirmPassword.dirty">Passwords are not the same</label>
+
+      <button mat-stroked-button style="width: 100%; margin-bottom: 1rem" [disabled]="registrationForm.invalid" (click)="register()">
+        <i *ngIf="authService.loading" class="fa fa-spinner fa-spin"></i>
+        Login
+      </button>
+    </form>
+    <span *ngIf="(!authService.loading) && authService.loginError" class="error-explain">{{authService.loginError}}</span>
+  </mat-card>
+</div>

@@ -1,0 +1,30 @@
+<div class="login-container">
+  <h1 style="color: #6866f5">SYPRON Courses</h1>
+  <mat-card class="login-card">
+    <h3 style="padding: 1rem; color: #6866f5">Sign In</h3>
+    <form [formGroup]="loginForm">
+      <div class="custom-input" style="margin-bottom: 2rem">
+        <input class="form-control"
+               formControlName="email"
+               [class.invalid-input]="email.errors && email.dirty"
+               placeholder="Email">
+        <label class="error-explain" *ngIf="email.errors?.required && email.dirty">Email is required</label>
+        <label class="error-explain" *ngIf="email.errors?.email && email.dirty">please enter a valid Email</label>
+
+      </div>
+      <div class="custom-input" style="margin-bottom: 2rem">
+        <input class="form-control"
+               type="password"
+               formControlName="password"
+               [class.invalid-input]="password.errors && password.dirty"
+               placeholder="Password">
+        <label class="error-explain" *ngIf="password.errors?.required && password.dirty">Password is required</label>
+      </div>
+      <button mat-stroked-button style="width: 100%; margin-bottom: 1rem" [disabled]="loginForm.invalid" (click)="login()">
+        <i *ngIf="authService.loading" class="fa fa-spinner fa-spin"></i>
+        Login
+      </button>
+    </form>
+    <span *ngIf="(!authService.loading) && authService.loginError" class="error-explain">{{authService.loginError}}</span>
+  </mat-card>
+</div>

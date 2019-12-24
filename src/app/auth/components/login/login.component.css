@@ -1,0 +1,33 @@
+
+.login-container {
+  padding: 3rem;
+  text-align: center !important;
+  align-content: center !important;
+  min-height: 100%;
+  height: max-content;
+  background-image: url("src/assets/imgs/sharon-mccutcheon-eMP4sYPJ9x0-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+.login-card {
+  margin: 5vh auto auto auto;
+  width: 100%;
+  max-width: 473px;
+  border-radius: 5px;
+  border: solid 2px #007ac1 !important;
+  background-color: rgba(245, 245, 245, 0.33);
+  height: fit-content;
+  min-height: 258px;
+  padding: 2.5rem !important;
+}
+
+@media (max-width: 445px) {
+  .login-container {
+    padding: 2rem 0.5rem;
+  }
+
+}
+

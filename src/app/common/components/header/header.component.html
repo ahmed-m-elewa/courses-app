@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <a class="nav-item" [routerLink]="['']">
+    Sypron Courses
+  </a>
+  <span class="spacer"></span>
+  <a class="nav-item">
+    <mat-icon>person</mat-icon>
+    {{authService.loggedInUser?.firstName}} {{authService.loggedInUser?.lastName}}
+  </a>
+  <a (click)="authService.logout()" class="nav-item">
+    <mat-icon>logout</mat-icon>
+  </a>
+</mat-toolbar>

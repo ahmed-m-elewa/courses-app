@@ -1,0 +1,77 @@
+<div class="page-container">
+  <div style="min-height: 60vh">
+      <h2 class="title1">Courses List</h2>
+      <div [hidden]="tblLoading" class="mat-elevation-z8 courses-tbl">
+        <table mat-table [dataSource]="dataSource" style="width: 100%">
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Course Title</th>
+            <td mat-cell *matCellDef="let element" data-label="Course Title"> {{element?.title}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="instructorName">
+            <th mat-header-cell *matHeaderCellDef>Instructor</th>
+            <td mat-cell *matCellDef="let element" data-label="Instructor"> {{element?.instructorName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="period">
+            <th mat-header-cell *matHeaderCellDef> Period </th>
+            <td mat-cell *matCellDef="let element" data-label="Period"> {{element?.period}} hrs </td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element" data-label="Price"> {{element?.price}} EGP</td>
+          </ng-container>
+          <ng-container matColumnDef="view">
+            <th mat-header-cell *matHeaderCellDef> View </th>
+            <td mat-cell *matCellDef="let element" data-label="View">
+              <a (click)="showCourse(element , courseModal)" style="cursor: pointer"><mat-icon>remove_red_eye</mat-icon> </a>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" data-label="Actions">
+              <a (click)="showCourse(element , courseModal)" style="cursor: pointer"><mat-icon>remove_red_eye</mat-icon> </a>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row class="courses-tbl-header" *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [hidden]="dataSource?.data.length <= pageSize" #paginator [pageSize]="pageSize" showFirstLastButtons></mat-paginator>
+      <app-loading *ngIf="tblLoading"></app-loading>
+    </div>
+    <div *ngIf="(!tblLoading) && coursesList.length === 0" style="text-align: center">
+      <mat-icon style="color: #007ec1; padding: 4rem 0 1rem 0; font-size: 12rem; width: auto; height: auto">warning</mat-icon>
+      <h1 style="color: #007ec1;">No courses is running on the app, please add some courses!</h1>
+    </div>
+  </div>
+</div>
+
+<ng-template #courseModal let-c="close" let-d="dismiss">
+  <div class="modal-header" style="background-color: #bbc3ff;">
+    <h4 class="modal-title">{{selectedCourse.title}}</h4>
+    <button mat-icon-button class="icon-button" type="button" aria-label="Close" (click)="d('Cross click')">
+      <mat-icon style="color: #010101;">cancel</mat-icon>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5>Instructor: {{selectedCourse.instructorName}}</h5>
+    <p>{{selectedCourse.description}}</p>
+    <mat-divider></mat-divider>
+    <div class="row">
+      <div class="col-6">
+        <h6 style="display: inline-flex;">Period : </h6>
+        <h6 style="display: inline-flex;">{{selectedCourse?.period || 0}} Hours</h6>
+      </div>
+      <div class="col-6">
+        <h6 style="display: inline-flex;">Price : </h6>
+        <h6 style="display: inline-flex;">{{selectedCourse?.price || 0}} EGP</h6>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="modal-footer">
+    <button mat-stroked-button type="button" (click)="d('Cross click')">Done</button>
+  </div>
+</ng-template>
