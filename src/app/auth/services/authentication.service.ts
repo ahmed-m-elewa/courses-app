@@ -81,4 +81,8 @@ export class AuthenticationService extends ApiService {
   getLoggedInUser() {
     this.loggedInUser = JSON.parse(localStorage.getItem('user')) as User;
   }
+
+  authorized(role: string) {
+    return this.loggedInUser.role.name === role;
+  }
 }

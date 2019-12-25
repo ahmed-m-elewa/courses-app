@@ -5,4 +5,5 @@ export interface Course {
   price: number;
   instructorName: string;
   period: number;
+  enrolled: boolean;
 }

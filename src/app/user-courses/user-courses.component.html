@@ -1,0 +1,37 @@
+<div class="page-container">
+        <h2 class="title1">Your Courses</h2>
+    <div *ngIf="!listLoading && this.coursesList.length > 0">
+        <div class="row">
+            <div *ngFor="let course of coursesList" class="col-md-6 col-sm-12">
+                <mat-card style="background-color: #b0bbd7; border-radius: 15px">
+                    <mat-card-header>
+                        <mat-card-title>{{course.title}}</mat-card-title>
+                        <mat-card-subtitle>{{course.instructorName}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content style="padding: 1rem">
+                        <p>
+                            {{course.description}}
+                        </p>
+                      <mat-divider></mat-divider>
+                      <div class="row" style="padding-top: 0.8rem">
+                        <div class="col-6">
+                          <p style="display: inline-flex; font-weight: bold">Period : </p>
+                          <p style="display: inline-flex;">{{course?.period || 0}} Hours</p>
+                        </div>
+                        <div class="col-6">
+                          <p style="display: inline-flex; font-weight: bold">Price : </p>
+                          <p style="display: inline-flex;">{{course?.price || 0}} EGP</p>
+                        </div>
+                      </div>
+                      <mat-divider></mat-divider>
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <app-loading *ngIf="listLoading"></app-loading>
+    <div *ngIf="(!listLoading) && coursesList.length === 0" style="text-align: center">
+        <h1 style="color: #007ec1;">You are not enrolled in any courses, Go ahead and start your learning journey..</h1>
+    </div>
+</div>

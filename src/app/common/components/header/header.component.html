@@ -7,6 +7,9 @@
     <mat-icon>person</mat-icon>
     {{authService.loggedInUser?.firstName}} {{authService.loggedInUser?.lastName}}
   </a>
+  <a *Secured="'ROLE_NORMAL_USER'" class="nav-item" [routerLink]="['/my-courses']">
+    My Courses
+  </a>
   <a (click)="authService.logout()" class="nav-item">
     <mat-icon>logout</mat-icon>
   </a>

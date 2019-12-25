@@ -16,7 +16,7 @@ export class CoursesService extends ApiService{
     return  this.get<Course[]>('/courses');
   }
   getUserCourses(userId): Observable<Course[]> {
-    return  this.get<Course[]>(`/courses/${userId}`);
+    return  this.get<Course[]>(`/courses/user/${userId}`);
   }
   createCourse(course: Course): Observable<Course> {
     return this.post<Course>('/courses' , course);
