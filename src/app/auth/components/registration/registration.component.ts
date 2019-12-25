@@ -52,6 +52,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.loginError = null;
   }
 
   passwordsValidator = (control: FormControl): { [s: string]: boolean } => {

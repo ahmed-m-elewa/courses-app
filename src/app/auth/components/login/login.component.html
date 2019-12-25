@@ -26,5 +26,6 @@
       </button>
     </form>
     <span *ngIf="(!authService.loading) && authService.loginError" class="error-explain">{{authService.loginError}}</span>
+    <span>New on Sypron courses ? <a [routerLink]="['/auth/register']">Create a new account</a></span>
   </mat-card>
 </div>
